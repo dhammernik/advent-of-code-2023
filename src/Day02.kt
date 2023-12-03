@@ -30,27 +30,12 @@ fun main() {
         return Game(id, bags)
     }
 
-    fun part1(input: List<String>): Int {
-        val games = input.map { parseGame(it) }
-        val filtered = games.filter { game ->
-            val bagSize = game.bags.size
-            val remaining = game.bags.filter { bag ->
-                bag.red <= 12 && bag.green <= 13 && bag.blue <= 14
-            }
+    fun part1(input: List<String>): Int = input.map { parseGame(it) }.filter { game ->
+        game.bags.filter { it.red <= 12 && it.green <= 13 && it.blue <= 14 }.size == game.bags.size
+    }.sumOf { it.id }
 
-            remaining.size == bagSize
-        }
-
-        return filtered.sumOf { it.id }
-    }
-
-    fun part2(input: List<String>): Int {
-        val games = input.map { parseGame(it) }
-        val products = games.map { game ->
-            game.bags.maxBy { it.red }.red * game.bags.maxBy { it.blue }.blue * game.bags.maxBy { it.green }.green
-        }
-
-        return products.sum()
+    fun part2(input: List<String>): Int = input.map { parseGame(it) }.sumOf { game ->
+        game.bags.maxOf { it.red } * game.bags.maxOf { it.blue } * game.bags.maxOf { it.green }
     }
 
     val input = readInput("Day02")
