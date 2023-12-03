@@ -47,25 +47,7 @@ fun main() {
     fun part2(input: List<String>): Int {
         val games = input.map { parseGame(it) }
         val products = games.map { game ->
-            var red = 0
-            var green = 0
-            var blue = 0
-
-            game.bags.forEach {
-                if (it.red > red) {
-                    red = it.red
-                }
-
-                if (it.blue > blue) {
-                    blue = it.blue
-                }
-
-                if (it.green > green) {
-                    green = it.green
-                }
-            }
-
-            red * blue * green
+            game.bags.maxBy { it.red }.red * game.bags.maxBy { it.blue }.blue * game.bags.maxBy { it.green }.green
         }
 
         return products.sum()
