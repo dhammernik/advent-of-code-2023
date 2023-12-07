@@ -1,4 +1,11 @@
+package day01
+
+import println
+import readInput
+
 fun main() {
+    val regexDigits = Regex("[^0-9]")
+
     fun part1(input: List<String>): Int {
         return input.sumOf {
             val tmp = it.replace(Regex("[^0-9 ]"), "")
@@ -29,7 +36,7 @@ fun main() {
         }
     }
 
-    val input = readInput("Day01")
+    val input = readInput("day01/Day01")
     part1(input).println()
     part2(input).println()
 }

@@ -1,3 +1,8 @@
+package day02
+
+import println
+import readInput
+
 fun main() {
     val regexDigits = Regex("[^0-9]")
     val regexChars = Regex("[^a-z]")
@@ -19,8 +24,7 @@ fun main() {
 
         return bags
     }
-
-
+    String
     fun parseGame(input: String): Game {
         val splitted = input.splitToSequence(":")
 
@@ -38,7 +42,7 @@ fun main() {
         game.bags.maxOf { it.red } * game.bags.maxOf { it.blue } * game.bags.maxOf { it.green }
     }
 
-    val input = readInput("Day02")
+    val input = readInput("day02/Day02")
     part1(input).println()
     part2(input).println()
 }
